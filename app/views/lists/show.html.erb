@@ -1,0 +1,13 @@
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://img.freepik.com/free-photo/movie-background-collage_23-2149876028.jpg)">
+  <%= @list.name %>
+</div>
+<p><%= link_to "< Back to all lists", lists_path %></p>
+<br>
+<p><%= link_to "Add a Movie", new_list_bookmark_path(@list) %></p>
+<% @list.movies.each do |movie|%>
+  <% bookmark = Bookmark.find_by(list: @list, movie: movie)%>
+  <h2><%= movie.title %></h2>
+  <h2><%= movie.overview %></h2>
+  <h2><%= movie.poster_url %></h2>
+  <h2><%= movie.rating %></h2>
+<% end %>
